@@ -1,3 +1,25 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+# Android & IntelliJ
+.gradle/
+.idea/
+*.iml
+build/
+captures/
+local.properties
+
+# Mac & Windows
+.DS_Store
+Thumbs.db
+
+# Keystore & secrets
+*.jks
+*.keystore
+*.pem
+*.key
+
+# Kotlin/Java
+*.class
+*.jar
+*.log
