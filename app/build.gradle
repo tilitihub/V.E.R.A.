@@ -1,0 +1,7 @@
+android {
+    ...
+    defaultConfig {
+        ...
+        buildConfigField "String", "OPENAI_API_KEY", "\"${project.properties['OPENAI_API_KEY']}\""
+    }
+}
