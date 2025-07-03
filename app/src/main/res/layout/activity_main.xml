@@ -1,21 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp"
-    android:orientation="vertical">
+    tools:context=".MainActivity">
 
+    <!-- Felhasználó által mondott szöveg megjelenítése (kezdetben láthatatlan) -->
     <TextView
-        android:id="@+id/outputText"
+        android:id="@+id/inputTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="V.E.R.A. vár..."
-        android:textSize="18sp"
-        android:padding="8dp" />
+        android:padding="8dp"
+        android:textAlignment="viewEnd"
+        android:textSize="16sp"
+        android:visibility="gone"
+        tools:text="Te: Mondj egy viccet!" />
 
-    <Button
-        android:id="@+id/speakButton"
+    <!-- Kimeneti szöveg gördíthető területen -->
+    <ScrollView
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/outputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="V.E.R.A. vár..."
+            android:textSize="18sp"
+            tools:text="V.E.R.A.: Persze, itt egy vicc..." />
+    </ScrollView>
+
+    <!-- Mikrofon gomb, középre igazítva -->
+    <ImageButton
+        android:id="@+id/speakButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Beszélj!" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Beszédindítás"
+        android:padding="16dp"
+        android:src="@android:drawable/ic_btn_speak_now"
+        app:tint="?attr/colorPrimary" />
+    <!--
+         Megjegyzés: érdemes egy saját mikrofon ikont használni az
+         @android:drawable/ic_btn_speak_now helyett.
+    -->
+
 </LinearLayout>

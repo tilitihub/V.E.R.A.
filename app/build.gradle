@@ -1,7 +1,49 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
 android {
-    ...
-    defaultConfig {
-        ...
-        buildConfigField "String", "OPENAI_API_KEY", "\"${project.properties['OPENAI_API_KEY']}\""
+    namespace 'com.example.vera'
+    compileSdk 34
+
+    buildFeatures {
+        buildConfig true
     }
+
+    defaultConfig {
+        applicationId "com.example.vera"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        // 🔐 API-kulcs beolvasása local.properties-ből
+        def openaiApiKey = project.findProperty("OPENAI_API_KEY") ?: ""
+        buildConfigField "String", "OPENAI_API_KEY", "\"${openaiApiKey}\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+
+dependencies {
+    implementation "androidx.core:core-ktx:1.12.0"
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.google.android.material:material:1.11.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.10"
 }

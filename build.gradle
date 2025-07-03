@@ -1,0 +1,36 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    // Android Alkalmazás Plugin
+    // Cseréld le a '8.2.1' verziót a legfrissebb stabil verzióra, amit használni szeretnél,
+    // vagy amit az Android Studio javasol.
+    // Az 'apply false' azt jelenti, hogy ez a plugin itt csak deklarálva van,
+    // és a modul (pl. :app) build.gradle fájljában lesz ténylegesen alkalmazva.
+    id 'com.android.application' version '8.2.1' apply false
+
+    // Kotlin Android Plugin
+    // Cseréld le az '1.9.0' verziót a projektedben használt Kotlin verzióra.
+    // Kompatibilisnek kell lennie az Android Gradle Plugin verziójával.
+    id 'org.jetbrains.kotlin.android' version '1.9.0' apply false
+}
+
+// Ez a rész régebbi projektekben volt gyakori.
+// A modern 'plugins {}' blokk használata esetén ez a 'allprojects' blokk
+// a repozitóriumok definiálására általában nem szükséges a projekt szintű fájlban,
+// mivel a 'settings.gradle' dependencyResolutionManagement blokkja ezt kezeli.
+// Ha mégis szükséged van rá, vagy a settings.gradle-ed régebbi stílusú, akkor használhatod:
+/*
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+*/
+
+// Ez a task nem kötelező, de hasznos lehet a 'clean' parancs alaposabbá tételéhez.
+// Ha a modern plugins {} blokkot használod, ez a rész akár el is hagyható.
+/*
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}
+*/
